@@ -1,0 +1,17 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d M Y T H I A
+
+bspc config border_width          1
+bspc config window_gap            16
+
+bspc config split_ratio           0.25
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+
+picom --config ~/.config/picom/picom.conf -b &
+sxhkd &
+polybar &
+~/.fehbg &
