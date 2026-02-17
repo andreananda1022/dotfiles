@@ -15,3 +15,4 @@ picom --config ~/.config/picom/picom.conf -b &
 sxhkd &
 polybar &
 ~/.fehbg &
+feh --bg-fill --no-fehbg --randomize ~/Pictures/* &
