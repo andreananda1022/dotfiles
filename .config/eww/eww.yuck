@@ -1,0 +1,54 @@
+(deflisten bspwm-workspaces
+  :initial "[]"
+  "~/.config/eww/scripts/bspwm_ws")
+
+(defpoll time
+  :interval "1s"
+  "date '+%H:%M'")
+
+(defpoll battery_percent
+  :interval "60s"
+  "cat /sys/class/power_supply/BAT0/capacity")
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :spacing 10
+    (for ws in bspwm-workspaces
+      (button :onclick "bspc desktop -f ${ws.id}"
+              :class "ws-button ${ws.status == 'F' || ws.status == 'O' || ws.status == 'U' ? 'active' : 'inactive'}"
+        (label :text "${ws.status == 'O' || ws.status == 'o' ? '' : ''}")))))
+
+(defwidget clock []
+  (box
+    :class "clock"
+    (label :text time)))
+
+(defwidget systemTray []
+  (box
+    :class "battery"
+    (label :text "󰁾 ${battery_percent}%")))
+
+(defwindow Main
+  :monitor 0
+  :geometry (geometry
+              :width "100%"
+              :height "40px"
+              :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  :reserve (struts :distance "36px" :side "top")
+  (centerbox
+    :class "container"
+    (box
+      :halign "start"
+      (workspaces))
+    (box
+      :halign "center"
+      (clock))
+    (box
+      :halign "end"
+      (systemTray))
+  )
+)
