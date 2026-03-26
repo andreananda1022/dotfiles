@@ -1,18 +1,20 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom &
 
-bspc monitor -d M Y T H I A
+bspc monitor eDP-1 -d 1 2 3 4 5
+bspc monitor HDMI-1 -d 6 7 8 9 10
 
-bspc config border_width          1
-bspc config window_gap            16
+bspc config border_width               0
+bspc config window_gap                 12
 
-bspc config split_ratio           0.25
-bspc config borderless_monocle    true
-bspc config gapless_monocle       true
+bspc config split_ratio                0.52
+bspc config borderless_monocle         true
+bspc config gapless_monocle            true
 
-picom --config ~/.config/picom/picom.conf -b &
-sxhkd &
-polybar &
-~/.fehbg &
-feh --bg-fill --no-fehbg --randomize ~/Pictures/* &
+bspc config pointer_follows_focus      true
+bspc config pointer_follows_monitor    true
+
+feh --bg-fill --no-fehbg --randomize ~/.wallpapers &
+xsetroot -cursor_name left_ptr &
