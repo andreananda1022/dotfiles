@@ -12,3 +12,4 @@ my experience with linux
 ### NOTE
 
 if you installing arch linux with minimal setup or manual way, don't forget to instal package "libcanberra" for kitty terminal bell sound.
+and the touchpad config, see this site: https://wiki.archlinux.org/title/Touchpad_Synaptics
