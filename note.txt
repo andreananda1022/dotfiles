@@ -1,1 +1,0 @@
-if you installing arch linux with minimal setup or manual way, don't forget to instal package "libcanberra" for kitty terminal bell sound.
