@@ -8,3 +8,7 @@ my experience with linux
 ### Neovim Preview
 
 <img src="assets/neovim-preview.jpg" alt="test" width="300"/>
+
+### NOTE
+
+if you installing arch linux with minimal setup or manual way, don't forget to instal package "libcanberra" for kitty terminal bell sound.
